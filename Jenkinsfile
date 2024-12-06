@@ -2,20 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
+        stage('Clone Repository') {
             steps {
                 git branch: 'master', url: 'https://github.com/NKtym/jenkins.git'
             }
         }
-        stage('Version') {
+
+        stage('Build Docker Image') {
             steps {
-                sh 'docker --version'
+                script {
+                    docker.build("repo:latest", ".")
+                }
             }
         }
-        stage('Build and Run with Docker Compose') {
+
+        stage('Deploy Container') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d --build'
+                script {
+                    sh 'docker stop repo-container || true && docker rm repo-container || true'
+                    sh 'docker run -d —name repo-container -p 80:80 repo:latest'
+                }
             }
         }
     }
