@@ -6,6 +6,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/NKtym/jenkins.git'
             }
         }
+        stage('Version'){
+            steps {
+                docker --version
+            }
+        }
         stage('Build and Run with Docker Compose') {
             steps {
                 sh 'docker-compose down || true'
