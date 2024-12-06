@@ -2,10 +2,8 @@
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive \
-    apt-get install --no-install-recommends --assume-yes \
-      docker.io
+RUN apt-get update && \
+    apt-get install -y sudo docker.io git
 
 RUN usermod -aG docker jenkins
 COPY --chown=jenkins:jenkins ./jenkins /var/jenkins_home/
