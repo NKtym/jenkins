@@ -7,7 +7,11 @@ pipeline {
                 git url: 'https://github.com/NKtym/jenkins', branch: 'master'
             }
         }
-
+        stage('Version') {
+            steps {
+                sh 'docker version'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
