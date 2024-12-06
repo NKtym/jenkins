@@ -4,7 +4,7 @@ FROM jenkins/jenkins:lts
 USER root
 RUN apt-get update && \
     apt-get install -y sudo \
-    docker.io \
+    apt-get install -y docker.io \
     git
 
 RUN usermod -aG docker jenkins

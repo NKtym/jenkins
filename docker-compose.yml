@@ -9,7 +9,7 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/pavel/.docker/desktop/docker.sock:/var/run/docker.sock
       - ./jenkins:/workspace/jenkins
     environment:
       - JENKINS_OPTS=--httpPort=8080
