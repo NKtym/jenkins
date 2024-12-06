@@ -1,12 +1,12 @@
-
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt-get update && \
-    apt-get install -y docker.io
-COPY --chown=jenkins:jenkins ./jenkins /var/jenkins_home/
-EXPOSE 8080 50000
-ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+
+RUN apt-get update && apt-get install -y \
+docker.io \
+docker-compose \
+&& apt-get clean
+
 USER jenkins
 
-ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
+COPY docker-compose.yml /var/jenkins_home/
