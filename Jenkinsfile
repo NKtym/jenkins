@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/your-repo.git'
+                git branch: 'master', url: 'https://github.com/NKtym/jenkins.git'
             }
         }
         stage('Build and Run with Docker Compose') {
