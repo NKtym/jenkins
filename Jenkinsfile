@@ -4,16 +4,23 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/username/repo.git'
+                git url: 'https://github.com/NKtym/jenkins', branch: 'main'
             }
         }
 
-        stage('Deploy with Docker Compose') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker-compose down'
-                    sh 'docker-compose pull'
-                    sh 'docker-compose up -d'
+                    docker.build("jenkins:latest", ".")
+                }
+            }
+        }
+
+        stage('Deploy Docker Container') {
+            steps {
+                script {
+                    sh 'docker stop jenkins-container || true && docker rm jenkins-container || true'
+                    sh 'docker run -d --name jenkins-container -p 8080:8080 jenkins:latest'
                 }
             }
         }
