@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000" # Для агента Jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock # Для работы с Docker из Jenkins
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+    restart: always
+    networks:
+      - jenkins_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jenkins.rule=Host(`jenkins.mydom.com`)"
+      - "traefik.http.routers.jenkins.entryPoints=websecure"
+      - "traefik.http.routers.jenkins.tls=true"
+      - "traefik.http.routers.jenkins.tls.certResolver=cloudflare"
+      #- "traefik.http.services.jenkins.loadbalancer.server.port=8080"
+
+
+  traefik:
+    image: traefik:latest
+    command: "--log.level=DEBUG"
+    #!!!
+    container_name: traefik
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./traefik/acme.json:/acme.json
+    environment:
+      - CLOUDFLARE_DNS_API_TOKEN=MUf1JVKmRmYXGsLd0QrX4zpT-UveQRQ2eD2bJy1-
+      - TRAEFIK_LOG_LEVEL=DEBUG
+    networks:
+      - jenkins_network
+    restart: always
+
+volumes:
+  jenkins_home: {}
+
+networks:
+  jenkins_network:
+    driver: bridge
