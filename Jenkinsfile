@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Version'){
             steps {
-                docker --version
+                sh 'docker --version'
             }
         }
         stage('Build and Run with Docker Compose') {
