@@ -14,6 +14,7 @@ pipeline {
         stage('Test Docker Access') {
             steps {
                 sh 'docker --version'
+                sh 'docker ps'
                 sh 'ls -l /var/run/docker.sock'
                 //sh 'docker info'
             }
@@ -23,7 +24,7 @@ pipeline {
             steps {
                 script {
                     //sh 'docker-compose down'
-                    sh 'docker-compose up -d'
+                    sh 'docker compose up -d'
                     //docker.build("jenkins:latest", ".")
                 }
             }
