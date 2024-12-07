@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
+    /*environment {
         DOCKER_HOST = "unix:///home/pavel/.docker/desktop/docker.sock"
-    }
+    }*/
     stages {
         stage('Clone Repository') {
             steps {
