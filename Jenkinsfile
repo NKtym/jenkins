@@ -13,6 +13,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    sh 'doker-compouse down'
+                    sh 'doker-compouse up -d'
                     docker.build("repo:latest", ".")
                 }
             }
