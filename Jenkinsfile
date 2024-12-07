@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         //DOCKER_HOST = "unix:///home/pavel/.docker/desktop/docker.sock"
-        DOCKER_HOST = "unix:///var/run/docker.sock"
+        //DOCKER_HOST = "unix:///var/run/docker.sock"
+        DOCKER_HOST="tcp://127.0.0.1:8080"
     }
     stages {
         stage('Clone Repository') {
@@ -26,6 +27,7 @@ pipeline {
                 script {
                     //sh 'docker-compose down'
                     //sh 'docker compose up -d'
+                    docker.build("jenkins:latest", ".")
                     sh 'docker-compose build'
                 }
             }
