@@ -8,11 +8,11 @@ RUN apt-get update && apt-get install -y \
     sudo \
     && apt-get clean
 
-#RUN sudo usermod -a -G docker jenkins
+RUN sudo usermod -a -G docker jenkins
 
 COPY docker-compose.yml /var/jenkins_home/
 
-#USER jenkins
+USER jenkins
 
 EXPOSE 8080
 
