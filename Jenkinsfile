@@ -3,7 +3,7 @@ pipeline {
     environment {
         //DOCKER_HOST = "unix:///home/pavel/.docker/desktop/docker.sock"
         //DOCKER_HOST = "unix:///var/run/docker.sock"
-        DOCKER_HOST="tcp://127.0.0.1:8080"
+        DOCKER_HOST = "tcp://127.0.0.1:8080"
     }
     stages {
         stage('Clone Repository') {
