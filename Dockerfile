@@ -11,10 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN sudo usermod -a -G docker jenkins
 
 #RUN groupadd -g 999 docker && usermod -aG docker jenkins
-#RUN chown -R jenkins:docker /var/run/docker.sock
-
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
+#RUN chown -R jenkins:docker /var/jenkins_home /var/run/docker.sock
 
 
 COPY docker-compose.yml /var/jenkins_home/
@@ -23,4 +20,4 @@ USER jenkins
 
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
