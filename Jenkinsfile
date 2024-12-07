@@ -26,7 +26,7 @@ pipeline {
                 script {
                     //sh 'docker-compose down'
                     //sh 'docker compose up -d'
-                    docker-compose build
+                    sh 'docker-compose build'
                 }
             }
         }
