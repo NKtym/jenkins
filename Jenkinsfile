@@ -12,7 +12,6 @@ pipeline {
 
         stage('Test Docker Access') {
             steps {
-                sh 'usermod -a -G docker jenkins'
                 sh 'docker --version'
                 sh 'ls -l /var/run/docker.sock'
                 sh 'docker info'
