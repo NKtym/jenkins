@@ -15,7 +15,7 @@ pipeline {
             steps {
                 sh 'docker --version'
                 sh 'ls -l /var/run/docker.sock'
-                sh 'docker info'
+                //sh 'docker info'
             }
         }
 
