@@ -24,7 +24,7 @@ pipeline {
                 script {
                     //sh 'docker-compose down'
                     //ssh 'docker-compose up -d'
-                    docker.build("repo:latest", ".")
+                    docker.build("jenkins:latest", ".")
                 }
             }
         }
