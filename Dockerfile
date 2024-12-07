@@ -8,7 +8,11 @@ RUN apt-get update && apt-get install -y \
     sudo \
     && apt-get clean
 
-RUN sudo usermod -a -G docker jenkins
+#RUN sudo usermod -a -G docker jenkins
+
+#RUN groupadd -g 999 docker && usermod -aG docker jenkins
+RUN chown -R jenkins:docker /var/jenkins_home
+
 
 COPY docker-compose.yml /var/jenkins_home/
 
