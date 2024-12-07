@@ -10,11 +10,17 @@ pipeline {
             }
         }
 
+        stage('Test Docker Access') {
+            steps {
+                sh 'docker info'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
                     //sh 'docker-compose down'
-                    //sh 'docker-compose up -d'
+                    //ssh 'docker-compose up -d'
                     docker.build("repo:latest", ".")
                 }
             }
