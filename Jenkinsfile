@@ -12,6 +12,7 @@ pipeline {
 
         stage('Test Docker Access') {
             steps {
+                sh 'docker --version'
                 sh 'docker info'
             }
         }
