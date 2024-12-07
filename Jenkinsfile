@@ -13,8 +13,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker-compose down'
-                    sh 'docker-compose up -d'
+                    //sh 'docker-compose down'
+                    //sh 'docker-compose up -d'
                     docker.build("repo:latest", ".")
                 }
             }
