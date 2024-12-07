@@ -13,6 +13,7 @@ pipeline {
         stage('Test Docker Access') {
             steps {
                 sh 'docker --version'
+                sh 'ls -l /var/run/docker.sock'
                 sh 'docker info'
             }
         }
