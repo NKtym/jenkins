@@ -15,7 +15,6 @@ pipeline {
             steps {
                 sh 'docker --version'
                 sh 'ls -l /var/run/docker.sock'
-                sh 'ls -l /home/pavel/.docker/desktop/docker.sock'
                 sh 'docker ps'
                 //sh 'docker info'
             }
