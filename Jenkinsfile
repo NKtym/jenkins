@@ -16,6 +16,7 @@ pipeline {
             steps {
                 sh 'docker --version'
                 sh 'ls -l /var/run/docker.sock'
+                sh 'docker login --username=NKtym --password=Pg04072004'
                 //sh 'chown -R jenkins:docker /var/jenkins_home /var/run/docker.sock'
                 sh 'docker ps'
                 //sh 'docker info'
