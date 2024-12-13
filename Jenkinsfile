@@ -35,7 +35,7 @@ pipeline {
                 script {
                     def repoDir = 'jenkins'
                     def repoUrl = 'git@github.com:NKtym/jenkins.git'
-                    def repoDir2 = '/home/pavel/Изображения/clone/'
+                    def repoDir2 = '/home/pavel/Изображения/clone/traefik'
                     if (fileExists(repoDir)) {
                         echo "Папка существует, выполняем git pull"
                         dir(repoDir) {
