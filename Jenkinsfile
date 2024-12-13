@@ -17,12 +17,33 @@ pipeline {
                 sh 'groups'
             }
         }
-        stage('Клонирование репозитория') {
+        /*stage('Клонирование репозитория') {
             steps {
                 script {
                     sshagent(['my-ssh-key']) {
                         sh 'git clone git@github.com:NKtym/jenkins.git'
                         sh 'ssh user@host "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения"'
+                    }
+                }
+            }
+        }*/
+        stage('Клонирование репозитория или обновление') {
+            steps {
+                script {
+                    def repoDir = 'jenkins'
+                    def repoUrl = 'git@github.com:NKtym/jenkins.git'
+                    if (fileExists(repoDir)) {
+                        echo "Папка существует, выполняем git pull"
+                        dir(repoDir) {
+                            sshagent(['my-ssh-key']) {
+                                sh 'git pull'
+                            }
+                        }
+                    } else {
+                        echo "Папка не существует, выполняем git clone"
+                        sshagent(['my-ssh-key']) {
+                            sh "git clone ${repoUrl} ${repoDir}"
+                        }
                     }
                 }
             }
