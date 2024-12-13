@@ -50,12 +50,5 @@ pipeline {
                 }
             }
         }
-        //stage('Клонирование репозитория или обновление') {
-           // steps {
-                //script {
-                    //sh 'ssh pavel@192.168.0.6 "cd /home/pavel/Документы/abclab/RGZ2 && dokcer-compose up -d"'
-                //}
-            //}
-        //}
     }
 }
