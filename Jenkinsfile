@@ -46,7 +46,7 @@ pipeline {
                         sh 'mkdir flag'
                         sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
-                    sh 'ssh pavel@192.168.0.6 "cd /home/pavel/Документы/abclab/RGZ2 && dokcer-compose up -d"'
+                    sh 'ssh pavel@192.168.0.6 "cd /home/pavel/Документы/abclab/RGZ2 && docker-compose up -d"'
                 }
             }
         }
