@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Клонирование репозитория') {
             steps {
-                sh 'eval $(ssh-agent -s)'
-                sh 'ssh-add ~/.ssh/id_rsa'
+                //sh 'eval $(ssh-agent -s)'
+                //sh 'ssh-add ~/.ssh/id_rsa'
                 script {
                     sshagent(['my-ssh-key']) {
                         //sh 'ssh -T git@github.com'
