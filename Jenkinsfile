@@ -50,15 +50,11 @@ pipeline {
                         }
                     }
                     //sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    if (fileExists(repoDir)) {
-                        sshagent(['my-ssh-key']) {
-                            sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                        }
+                    if (fileExists(repoDir2)) {
+                        sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
                     else {
-                        sshagent(['my-ssh-key']) {
-                            sh 'ssh pavel@192.168.0.6 "git pull"'
-                        }
+                        sh 'ssh pavel@192.168.0.6 "git pull https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
                 }
             }
