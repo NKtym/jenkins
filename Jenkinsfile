@@ -48,7 +48,7 @@ pipeline {
                             sh "git clone ${repoUrl} ${repoDir}"
                         }
                     }
-                    sh 'ssh user@host "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения"'
+                    sh 'ssh user@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения"'
                 }
             }
         }
