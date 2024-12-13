@@ -50,12 +50,12 @@ pipeline {
                         }
                     }
                     //sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    if (fileExists(repoDir2)) {
+                    //if (fileExists(repoDir2)) {
                         sh 'ssh pavel@192.168.0.6 "git pull https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    }
-                    else {
-                        sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    }
+                    //}
+                    //else {
+                      //  sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
+                    //}
                 }
             }
         }
