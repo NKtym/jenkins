@@ -24,7 +24,6 @@ services:
       - "traefik.http.routers.jenkins.entryPoints=websecure"
       - "traefik.http.routers.jenkins.tls=true"
       - "traefik.http.routers.jenkins.tls.certResolver=cloudflare"
-      #- "traefik.http.services.jenkins.loadbalancer.server.port=8080"
 
 
   traefik:

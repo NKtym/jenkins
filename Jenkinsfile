@@ -20,16 +20,6 @@ pipeline {
                 sh 'groups'
             }
         }
-        /*stage('Клонирование репозитория') {
-            steps {
-                script {
-                    sshagent(['my-ssh-key']) {
-                        sh 'git clone git@github.com:NKtym/jenkins.git'
-                        sh 'ssh user@host "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения"'
-                    }
-                }
-            }
-        }*/
         stage('Клонирование репозитория или обновление') {
             steps {
                 script {
@@ -56,6 +46,13 @@ pipeline {
                         sh 'mkdir flag'
                         sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
+                }
+            }
+        }
+        stage('Клонирование репозитория или обновление') {
+            steps {
+                script {
+                    sh 'ssh pavel@192.168.0.6 "cd /home/pavel/Документы/abclab/RGZ2 && dokcer-compose up -d"'
                 }
             }
         }
