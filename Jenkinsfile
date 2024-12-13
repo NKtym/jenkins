@@ -15,13 +15,13 @@ pipeline {
                 sh 'ls -l /var/run/docker.sock'
                 sh 'id'
                 sh 'groups'
-                sh 'docker ps'
             }
         }
         stage('Клонирование репозитория') {
             steps {
                 script {
                     sshagent(['my-ssh-key']) {
+                        sh 'ssh -T git@github.com'
                         sh 'git clone git@github.com:NKtym/jenkins.git'
                     }
                 }
