@@ -49,7 +49,12 @@ pipeline {
                         }
                     }
                     //sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
+                    if (fileExists(repoDir)) {
+                        sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
+                    }
+                    else {
+                        sh 'ssh pavel@192.168.0.6 "git pull"'
+                    }
                 }
             }
         }
