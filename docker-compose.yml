@@ -39,7 +39,8 @@ services:
       - ./traefik/traefik.yml:/etc/traefik/traefik.yml
       - ./traefik/acme.json:/acme.json
     environment:
-      - CLOUDFLARE_DNS_API_TOKEN=MUf1JVKmRmYXGsLd0QrX4zpT-UveQRQ2eD2bJy1-
+      - CF_API_EMAIL=pasha04072004@gmail.com
+      - CF_API_KEY=MUf1JVKmRmYXGsLd0QrX4zpT-UveQRQ2eD2bJy1-
       - TRAEFIK_LOG_LEVEL=DEBUG
     networks:
       - jenkins_network
