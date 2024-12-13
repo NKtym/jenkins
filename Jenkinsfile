@@ -3,6 +3,9 @@ pipeline {
     environment {
         DOCKER_HOST = "unix:///var/run/docker.sock"
     }
+    triggers {
+        githubPush()
+    }
     stages {
         stage('Clone Repository') {
             steps {
