@@ -50,7 +50,7 @@ pipeline {
                         }
                     }
                     //sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
-                    if (fileExists(repoDir2)) {
+                    if (fileExists(repoDir)) {
                         sh 'ssh pavel@192.168.0.6 "git clone git@github.com:NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
                     else {
