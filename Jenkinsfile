@@ -21,6 +21,8 @@ pipeline {
             steps {
                 script {
                     sshagent(['my-ssh-key']) {
+                        sh 'eval $(ssh-agent -s)'
+                        sh 'ssh-add ~/.ssh/id_rsa'
                         sh 'ssh -T git@github.com'
                         sh 'git clone git@github.com:NKtym/jenkins.git'
                     }
