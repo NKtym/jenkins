@@ -35,7 +35,7 @@ pipeline {
                 script {
                     def repoDir = 'jenkins'
                     def repoUrl = 'git@github.com:NKtym/jenkins.git'
-                    def repoFlag = 'push.txt'
+                    def repoFlag = 'flag'
                     if (fileExists(repoDir)) {
                         echo "Папка существует, выполняем git pull"
                         dir(repoDir) {
@@ -53,7 +53,7 @@ pipeline {
                         sh 'ssh pavel@192.168.0.6 "cd /home/pavel/Изображения/clone/ && git pull https://github.com/NKtym/jenkins.git"'
                     }
                     else {
-                        sh 'push.txt'
+                        sh 'mkdir flag'
                         sh 'ssh pavel@192.168.0.6 "git clone https://github.com/NKtym/jenkins.git /home/pavel/Изображения/clone/"'
                     }
                 }
